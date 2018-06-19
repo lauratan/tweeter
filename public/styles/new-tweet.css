@@ -1,0 +1,24 @@
+section {
+    background: #eee;;
+    border-radius: 10px;
+    height: 180px;
+    border: 1px solid lightgrey;
+    padding: 0 2em 0 2em;
+}
+
+h2 {
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+
+textarea {
+    height: 65px;
+    width: 100%;
+    padding: 5px 5px;
+}
+
+span {
+    padding-left: 240px;
+    font-style: italic;
+    font-size: smaller;
+}
