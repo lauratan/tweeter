@@ -4,6 +4,7 @@ section.new-tweet {
     height: 180px;
     border: 1px solid lightgrey;
     padding: 0 2em 0 2em;
+    margin-bottom: 10px;
 }
 
 .new-tweet h2 {
@@ -27,26 +28,38 @@ span.counter{
     color: red;
 }
 
-section.tweet-container {
+/* section {
     background: white;
     border-radius: 10px;
     height: 180px;
     border: 1px solid lightgrey;
     margin-top: 10px;
+} */
+
+.tweet {
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+    margin-bottom: 10px;
 }
 
-article.tweet header {
+.tweet:hover{
+    border: 1px solid black;
+}
+
+
+.tweet header {
+    background-color: #eee;
     border-radius: 10px 10px 0 0;
-    border: 1px solid red;
     background-color: #eee;
     text-align: left;
     border: 2px solid #eee;
+    padding-left: 1px;
     height: 65px;
     display: flex;
     justify-content: space-between;
 }
 
-article.tweet img {
+.tweet img {
     border-radius: 10px;
     padding-top: 5px;
     padding-left: 5px;
@@ -54,31 +67,28 @@ article.tweet img {
     height: 55px;
 }
 
-article.tweet h1 {
+.tweet h1 {
     display: inline-block;
-    font-size: 2em;
+    font-size: x-large;
     margin: 0;
-    padding: 0;
-    width: 65%;
-}
-article.tweet h4 {
-    display: inline-block;
-    font-size: 1em;
-    margin: 0;
-    padding: 0;
-    width: 15%;
-    padding-top: 10px;
-    color: lightslategrey;
-    font-weight: 100;
+    padding: 10px 0px 35px 10px;
+    width: 60%;
 }
 
-article.tweet p {
+.tweet h4 {
+    float: right;
+    color: lightslategrey;
+    font-weight: 100;
+    padding-right: 5px;
+}
+
+.tweet p {
     padding: 30px 10px 20px 10px;
     margin: 0;
 
 }
 
-article.tweet footer {
+.tweet footer {
     border-top: 1px solid #eee;
     text-align: left;
     padding-left: 8px;
@@ -86,20 +96,17 @@ article.tweet footer {
     padding-top: 12px;
 }
 
-article.tweet .footerIcons{
+.tweet .footerIcons{
     visibility: hidden;
     float: right;
     padding-right: 10px;
 }
 
-.tweet-container:hover .footerIcons {
+.tweet:hover .footerIcons {
     visibility: visible;
     float: right;
     padding-right: 10px;
     color: #58d0c4;
 }
 
-.tweet-container:hover{
-    border: 1px solid black;
-}
 
