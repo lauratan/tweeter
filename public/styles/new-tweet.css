@@ -85,3 +85,21 @@ article.tweet footer {
     padding-bottom: 15px;
     padding-top: 12px;
 }
+
+article.tweet .footerIcons{
+    visibility: hidden;
+    float: right;
+    padding-right: 10px;
+}
+
+.tweet-container:hover .footerIcons {
+    visibility: visible;
+    float: right;
+    padding-right: 10px;
+    color: #58d0c4;
+}
+
+.tweet-container:hover{
+    border: 1px solid black;
+}
+
