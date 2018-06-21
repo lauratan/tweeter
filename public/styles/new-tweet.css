@@ -53,10 +53,10 @@ span.counter{
     background-color: #eee;
     text-align: left;
     border: 2px solid #eee;
-    padding-left: 1px;
     height: 65px;
     display: flex;
     justify-content: space-between;
+    margin-left: 1px;
 }
 
 .tweet img {
