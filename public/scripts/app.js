@@ -67,6 +67,8 @@
 
 $(document).ready(function(){
 
+  loadTweets();
+
     function renderTweets(tweets) {
         for (let item in tweets) {
           // console.log(item);
@@ -141,10 +143,10 @@ $(document).ready(function(){
       let dataLength = dataValue.length;
       let data = $('.new-tweet form').serialize();
       //Check data validity
-      let validLengthOfData = validLength(dataLength);
+      let validDataLength = validLength(dataLength);
       let validData = validation(dataValue);
       // console.log(validData);
-      if (validData && validLengthOfData){
+      if (validData && validDataLength){
         // 2. Make a AJAX request using that data
         $.ajax('/tweets', {
           method: 'POST',
@@ -157,10 +159,12 @@ $(document).ready(function(){
           })
         } 
       if (!validData){
-        alert("Empty message!")
+        alert("No tweet entered!");
+        //$.toast('No tweet entered!')
       }
-      if (!validLengthOfData){
-        alert("Tweet is too long!")
+      if (!validDataLength){
+        alert("Tweet is too long!");
+        //$.toast('Tweet is too long!')
       }
     });   
 });

@@ -85,6 +85,8 @@ span.counter{
 .tweet p {
     padding: 30px 10px 20px 10px;
     margin: 0;
+    word-wrap: break-word;
+    width: 380px;
 
 }
 
