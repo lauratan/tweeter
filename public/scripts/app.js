@@ -160,18 +160,19 @@ $(document).ready(function(){
         })
     } 
     if (!validData){
-      alert("No tweet entered!");
-      //$.toast('No tweet entered!')
-    }
+      // alert("No tweet entered!");
+      $.toast("No tweet entered!")
+    };
     if (!validDataLength){
-      alert("Tweet is too long!");
-      //$.toast('Tweet is too long!')
+      //alert("Tweet is too long!");
+      // $.toast('Toast message to be shown')
+      $.toast('Tweet is too long!')
     }
   }); 
   
   $('.compose').click(function(){
     $('.new-tweet').slideToggle();
-    $('textarea').focus();
+    $('textarea').focus;
   })
 
 });

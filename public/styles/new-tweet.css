@@ -5,6 +5,7 @@ section.new-tweet {
     border: 1px solid lightgrey;
     padding: 0 2em 0 2em;
     margin-bottom: 10px;
+    display: none;
 }
 
 .new-tweet h2 {
