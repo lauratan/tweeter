@@ -68,52 +68,55 @@
 $(document).ready(function(){
 
   loadTweets();
+  $(".new-tweet").slideToggle();
 
-    function renderTweets(tweets) {
-        for (let item in tweets) {
-          // console.log(item);
-            let tweet = tweets[item];
-  
-            let newObj = {
-                name: tweet.user.name,
-                avatar: tweet.user.avatars.small,
-                handle: tweet.user.handle,
-                content: tweet.content.text,
-                time: Math.round(tweet.created_at / 86400000000)
-                // try using momentjs
-            }
-            let result = createTweetElement(newObj);
-            $('.tweet-container').prepend(result);
-        }
-        return;
-    }
-    function createTweetElement(tweeterObj){
-        let HTMLObj = `
-          <article class="tweet"> 
-            <header> 
-              <img class="userIcon" src=${tweeterObj.avatar}>
-              <h1> ${tweeterObj.name}</h1>
-              <h4> ${tweeterObj.handle}</h4>
-            </header>
-            <p> ${tweeterObj.content} </p> 
-            <footer> ${tweeterObj.time} days ago
-                <span class="footerIcons">
-                  <i class="fa fa-flag"></i>
-                  <i class="fa fa-retweet"></i>
-                  <i class="fa fa-heart"></i>
-                </span>
-            </footer>
-          </article>`;
+  function renderTweets(tweets) {
+      for (let item in tweets) {
+        // console.log(item);
+          let tweet = tweets[item];
 
-        return HTMLObj;
-    }
+          let newObj = {
+              name: tweet.user.name,
+              avatar: tweet.user.avatars.small,
+              handle: tweet.user.handle,
+              content: tweet.content.text,
+              time: Math.round(tweet.created_at / 86400000000)
+              // try using momentjs
+          }
+          let result = createTweetElement(newObj);
+          $('.tweet-container').prepend(result);
+      }
+      return;
+  }
 
-    // $.ajax('/products').done(function(products) {
-    //   // 1. Iterate through the products
-    //   $.each(products, function(productId, product) {
-    //     // 2. Create the li tag according to the product we are currently on
-    //     let $liElement = productLiElement(product);
-  
+  //escape function for cross-site scripting
+  function escape(str) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
+  function createTweetElement(tweeterObj){
+      let HTMLObj = `
+        <article class="tweet"> 
+          <header> 
+            <img class="userIcon" src=${escape(tweeterObj.avatar)}>
+            <h1> ${escape(tweeterObj.name)}</h1>
+            <h4> ${escape(tweeterObj.handle)}</h4>
+          </header>
+          <p> ${escape(tweeterObj.content)} </p> 
+          <footer> ${escape(tweeterObj.time)} days ago
+              <span class="footerIcons">
+                <i class="fa fa-flag"></i>
+                <i class="fa fa-retweet"></i>
+                <i class="fa fa-heart"></i>
+              </span>
+          </footer>
+        </article>`;
+
+      return HTMLObj;
+  }
+
     function loadTweets(){
       $.ajax('/tweets').done(function(data){
         $('.tweet-container').html('');
@@ -121,52 +124,55 @@ $(document).ready(function(){
       })
     }
 
-    function validation(dataValue){
-      if (dataValue === null || dataValue === ""){
-        return false;
-      }
-      return true;
+  //check data value 
+  function validation(dataValue){
+    if (dataValue === null || dataValue === ""){
+      return false;
     }
+    return true;
+  }
 
-    function validLength(dataLength){
-      if (dataLength > 140){
-        return false;
-      }
-      return true;
+  //check data length
+  function validLength(dataLength){
+    if (dataLength > 140){
+      return false;
     }
+    return true;
+  }
 
-    //using jQuery to prevent default events and submit form using AJAX
-    $('.new-tweet form').on('submit', function(e) {
-      e.preventDefault();
-      // 1. Get the data from the form
-      let dataValue = $('.new-tweet textarea').val();
-      let dataLength = dataValue.length;
-      let data = $('.new-tweet form').serialize();
-      //Check data validity
-      let validDataLength = validLength(dataLength);
-      let validData = validation(dataValue);
-      // console.log(validData);
-      if (validData && validDataLength){
-        // 2. Make a AJAX request using that data
-        $.ajax('/tweets', {
-          method: 'POST',
-          data: data
-        }).done(function(data) {
-          loadTweets();
-          // $('.tweet-container').prepend(result);
-          // 2. Clear the form
-          $('textarea').val('');
-          })
-        } 
-      if (!validData){
-        alert("No tweet entered!");
-        //$.toast('No tweet entered!')
-      }
-      if (!validDataLength){
-        alert("Tweet is too long!");
-        //$.toast('Tweet is too long!')
-      }
-    });   
+  //using jQuery to prevent default events and submit form using AJAX
+  $('.new-tweet form').on('submit', function(e) {
+    e.preventDefault();
+    let dataValue = $('.new-tweet textarea').val();
+    let dataLength = dataValue.length;
+    let data = $('.new-tweet form').serialize();
+    //Check data validity
+    let validDataLength = validLength(dataLength);
+    let validData = validation(dataValue);
+    
+    if (validData && validDataLength){
+      $.ajax('/tweets', {
+        method: 'POST',
+        data: data
+      }).done(function(data) {
+        loadTweets();
+        $('textarea').val('');
+        })
+    } 
+    if (!validData){
+      alert("No tweet entered!");
+      //$.toast('No tweet entered!')
+    }
+    if (!validDataLength){
+      alert("Tweet is too long!");
+      //$.toast('Tweet is too long!')
+    }
+  }); 
+  
+  $('.compose').click(function(){
+    $('.new-tweet').slideToggle();
+  })
+
 });
 
 
