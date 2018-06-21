@@ -157,6 +157,7 @@ $(document).ready(function(){
       }).done(function(data) {
         loadTweets();
         $('textarea').val('');
+        $('.counter').text('140');
         })
     } 
     if (!validData){
