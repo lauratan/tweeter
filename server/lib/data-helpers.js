@@ -18,7 +18,7 @@ module.exports = function makeDataHelpers(db) {
       db.collection("tweets").find().toArray((err, tweets) => {
         if (err) {
           return callback(err);
-      }
+        }
         callback(null, tweets.sort(sortNewestFirst));
       });
     }

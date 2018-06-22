@@ -1,5 +1,4 @@
-//Client-side JS logic goes here
-
+//Client-side JS 
 $(document).ready(function(){
 
   loadTweets();
@@ -58,7 +57,7 @@ $(document).ready(function(){
       })
     }
 
-  //check data value 
+  //Check data value 
   function validation(dataValue){
     if (dataValue === null || dataValue === ""){
       return false;
@@ -66,7 +65,7 @@ $(document).ready(function(){
     return true;
   }
 
-  //check data length
+  //Check data length
   function validLength(dataLength){
     if (dataLength > 140){
       return false;
@@ -74,7 +73,7 @@ $(document).ready(function(){
     return true;
   }
 
-  //using jQuery to prevent default events and submit form using AJAX
+  //Using jQuery to prevent default events and submit form using AJAX
   $('.new-tweet form').on('submit', function(e) {
     e.preventDefault();
     let dataValue = $('.new-tweet textarea').val();
@@ -95,7 +94,6 @@ $(document).ready(function(){
         })
     } 
     if (!validData){
-      // alert("No tweet entered!");
       $.toast({
         text: "No tweet entered!",
         heading: 'Error!',
@@ -105,8 +103,6 @@ $(document).ready(function(){
       })
     };
     if (!validDataLength){
-      //alert("Tweet is too long!");
-      // $.toast('Toast message to be shown')
       $.toast({
         text: "Tweet is too long!",
         heading: 'Error!',
@@ -119,8 +115,8 @@ $(document).ready(function(){
   }); 
   
   $('.compose').click(function(){
-    $('.new-tweet').slideToggle();
-    $('textarea').focus();
+  $('.new-tweet').slideToggle();
+  $('textarea').focus();
   })
 });
 
