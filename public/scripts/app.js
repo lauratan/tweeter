@@ -120,7 +120,7 @@ $(document).ready(function(){
   
   $('.compose').click(function(){
     $('.new-tweet').slideToggle();
-    $('textarea').focus;
+    $('textarea').focus();
   })
 });
 
