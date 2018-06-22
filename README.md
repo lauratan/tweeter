@@ -5,8 +5,7 @@ Tweeter is a simple, single-page AJAX-based Twitter clone that uses jQuery, HTML
 ## Final Product
 
 ![alt text](https://github.com/lauratan/tweeter/blob/master/docs/tweeterApp.gif)
-!["Screenshot of icons on tweet"]
-(https://github.com/lauratan/tweeter/blob/master/docs/tweet-icons.png)
+
 
 ## Getting Started
 
