@@ -17,6 +17,7 @@ Tweeter is a simple, single-page AJAX-based Twitter clone that uses jQuery, HTML
 - body-parser: 1.15.2
 - Chance: 1.0.2
 - Express: 4.13.4
+- jQuery
 - jquery-toast-plugin: 1.3.2
 - md5: 2.1.0
 - MongoDB: 2.2.35
