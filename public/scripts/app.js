@@ -72,7 +72,6 @@ $(document).ready(function(){
 
   function renderTweets(tweets) {
       for (let item in tweets) {
-        // console.log(item);
           let tweet = tweets[item];
 
           let newObj = {
@@ -162,12 +161,25 @@ $(document).ready(function(){
     } 
     if (!validData){
       // alert("No tweet entered!");
-      $.toast("No tweet entered!")
+      $.toast({
+        text: "No tweet entered!",
+        heading: 'Error!',
+        showHideTransition : 'slide',
+        bgColor : 'red',
+        icon: 'warning',
+      })
     };
     if (!validDataLength){
       //alert("Tweet is too long!");
       // $.toast('Toast message to be shown')
-      $.toast('Tweet is too long!')
+      $.toast({
+        text: "Tweet is too long!",
+        heading: 'Error!',
+        showHideTransition : 'slide',
+        bgColor : 'red',
+        icon: 'warning',
+
+      })
     }
   }); 
   
@@ -175,7 +187,6 @@ $(document).ready(function(){
     $('.new-tweet').slideToggle();
     $('textarea').focus;
   })
-
 });
 
 
